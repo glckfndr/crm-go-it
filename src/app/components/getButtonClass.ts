@@ -1,18 +1,17 @@
 import { Status } from './StatusLabel';
+import { clsx } from 'clsx';
+
+const baseClass =
+  'inline-flex items-center py-1 px-3.5 rounded-3xl font-medium';
+const btnColor = {
+  active: 'text-green-600 bg-green-200',
+  notActive: 'text-red-600 bg-red-200',
+  pending: 'text-orange-600 bg-orange-200',
+  suspended: 'text-blue-600 bg-blue-200',
+};
 
 function getButtonClass(status: Status) {
-  switch (status) {
-    case Status.Active:
-      return 'inline-flex items-center py-1 px-3.5 rounded-3xl font-medium text-green-600 bg-green-200';
-    case Status.NotActive:
-      return 'inline-flex items-center py-1 px-3.5 rounded-3xl font-medium text-red-600 bg-red-200';
-    case Status.Pending:
-      return 'inline-flex items-center py-1 px-3.5 rounded-3xl font-medium text-orange-600 bg-orange-200';
-    case Status.Suspended:
-      return 'inline-flex items-center py-1 px-3.5 rounded-3xl font-medium text-blue-600 bg-blue-200';
-    default:
-      return '';
-  }
+  return clsx(baseClass, btnColor[status]);
 }
 
 export default getButtonClass;
